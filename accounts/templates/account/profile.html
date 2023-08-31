@@ -1,0 +1,20 @@
+{% extends "account/base.hmtl" %}
+{% load static %}
+
+{% block content %}
+<style text="text/css">
+  .image-container{
+    height: auto;
+    max-width: 200px;
+  }
+</style>
+<div class="content">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ account.profile.image.url}}">
+    <div class="media-body">
+      <h2 class="account-headings">{{user.email}}</h2>
+    </div>
+  </div>
+  <!--put form here-->
+</div>
+{% endblock content %}

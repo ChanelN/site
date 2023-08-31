@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="home">
+  <h1>DASBOARD</h1>
+  {% if request.user.is_authenticated %}
+    <h1>HELLO LOGGGED IN</h1>
+    <!--account: name of view in urls-->
+    <!--<p><img src="{% static 'images/defaultUser.png' %}"></p>-->
+    <div class="media-body">
+      <h2 class="account-headings">{{user.email}}</h2>
+  {% endif %}
+
+  <p>Welcome to dashboard</p>
+</div>
+{% endblock content %}

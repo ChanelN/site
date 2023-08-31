@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="d-flex p-3 px-md-4 mb-4 bg-white border-bottom shadow-sm">
+  <div class="d-none d-md-flex flex-row my-auto flex-grow-1 align-items-center">
+    <!--column 1-->
+    {% if request.user.is_authenticated %}
+    <h3 class = "mr-3 justify-content-start">
+      <a class="text-dark" href="{% url 'accounts:dashboard' %}">Home</a>
+    {% else %}
+    <a class="text dark" href="{% url 'accounts:home' %}">Home</a>
+    {% endif %}
+    </h3>
+
+    <!--column 2-->
+    <div class="d-flex flex-row-reverse flex-grow-1">
+      <nav>
+        {% if request.user.is_authenticated %}
+          <!--show profile pic-->
+          <a class="btn btn-outline-primary" href="{% url 'accounts:logout' %}">Logout</a>
+          <div class="btn">
+            <img class="rounded-circle account-image" data-toggle="dropdown" aria-haspopup="true" id="id_profile_links" src="{% static 'images/defaultUser.png' %}" alt="userProfile" width="40" height="40">
+          </div>
+        {% else %}
+          <a class="btn btn-outline-primary" href="{% url 'accounts:userlogin' %}">Login</a>
+          <a class="btn" href="{% url 'accounts:usersignup' %}">Signup</a>
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+</div>

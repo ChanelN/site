@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+ added as_p to the form in order to display the form fields wrapped in paragraph tags.
+
+ {% csrf_token %}
+    {{form.as_p}}
+-->
+<html>
+<head> <title>Signup</title></head>
+
+{% block content %}
+  <h2>Sign Up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+  </form>
+  <p class="message">Try log in <a href="{% url 'accounts:userlogin' %}">Login</a></p>
+{% endblock %}
+
+{% block messages %}
+  {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}
+</html>
