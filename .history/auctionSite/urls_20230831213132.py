@@ -21,7 +21,7 @@ from rest_framework.routers import DefaultRouter
 from django.conf import settings
 from django.contrib import admin
 
-from accounts.models import CustomUser
+from accounts.models import User
 from accounts.views import UserViewset as Userview
 from items.views import ItemViewSet as Itemsview
 

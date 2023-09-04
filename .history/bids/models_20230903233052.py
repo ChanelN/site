@@ -1,0 +1,23 @@
+from django.db import models
+from accounts.models import CustomUser
+from items.models import Item
+from django.utils import timezone
+
+class Bid(models.Model):
+    #i can't have both foreign keys pointing to the CustomUser to be on_delete=models.CASCADE due to integrity issues
+    creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='created_item')
+    bidder = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True, related_name='bids_made')
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='bid_item')
+    bid_price = models.DecimalField(max_digits=10, decimal_places=2)
+    bid_time = models.DateTimeField(auto_now=True, blank=True)
+    won = models.BooleanField(default=False) #this can keep track of whether it is the current highest bid
+
+    objects = models.Manager() 
+    
+    class Meta:
+        permissions = [
+            ("can_delete_bid", "can delete bid"),
+            ("can_change_bid", "Can change bid"),
+        ]
+    def __str__(self):
+        return f"Bid by {self.bidder.email} on {self.item.title} for £{self.bid_price}"
