@@ -1,0 +1,31 @@
+from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
+from .models import Item, User, Bid
+
+class BidSerializer(serializers.ModelSerializer):
+    #so primaryKeyRelatedField means it only links using the primary key of customUser(the userId)
+    #the readable field is to return in the serialized output
+    creator = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True)
+    #creator_readable = serializers.StringRelatedField(source='creator', read_only=True) #human readable rep
+    creator_readable = serializers.SerializerMethodField(source='creator', read_only=True)
+
+    bidder = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True)
+    #bidder_readable = serializers.StringRelatedField(source='bidder', read_only=True) #human readable rep
+    bidder_readable = serializers.SerializerMethodField(source='bidder', read_only=True)
+
+    item = serializers.PrimaryKeyRelatedField(queryset=Item.objects.all(), write_only=True)
+    #item_readable = serializers.StringRelatedField(source='item', read_only=True)
+    item_readable = serializers.SerializerMethodField(source='item', read_only=True)
+
+    class Meta:
+        model = Bid
+        fields = ['creator', 'creator_readable', 'bidder', 'bidder_readable', 'item','item_readable', 'bid_price', 'bid_time', 'won']
+
+    def validate(self, data):
+        bidder = data['bidder']
+        creator = data['creator']
+
+        if bidder == creator:
+            raise serializers.ValidationError("The creator of the item cannot bid on it.")
+
+        return data
