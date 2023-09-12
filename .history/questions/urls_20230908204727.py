@@ -1,0 +1,9 @@
+from django.urls import path, include
+from questions import views
+
+urlpatterns = [
+    #these views are implemented as classes - inheriting from existing generic view functs
+    path('ask-question/', views.MakeQuestion.as_view()),
+    path('item-questions/<int:id>/', views.itemQuestions.as_view()),
+    path('answers/<int:id>/', views.getAnswers.as_view()),
+]

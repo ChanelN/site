@@ -1,0 +1,428 @@
+:root {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    --light: 80;
+    /* the threshold at which colors are considered "light." Range: integers from 0 to 100,
+  recommended 50 - 70 */
+    --threshold: 60;
+}
+  
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+a:hover {
+    color: #535bf2;
+}
+  
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+a:hover {
+    color: #535bf2;
+}
+  
+body {
+/*display: flex;
+    place-items: center;
+      min-width: 320px;
+  
+        align-items: flex-start;
+    justify-content: center;
+*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #afc480;
+}
+  
+html {
+    display: flex;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+}
+  
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+  
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+button:hover {
+    border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+  
+.card {
+    padding: 2em;
+}
+  
+/*start of my own style code - have to justify content for loggin page*/
+.outer-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    padding-bottom: 10%;
+}
+  
+.form-card {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+  
+.form-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.progress-circular {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #ccc;
+    border-top: 4px solid #007bff; /* Replace with your desired color */
+    animation: spin 1s linear infinite;
+}
+  
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+  
+.text-field {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+/* loading spin */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+  
+.home-header{
+    padding-top: 10%;
+}
+.logo-img{
+    width: 13vh;
+    height: auto;
+}
+  
+/* for dropDOWN MENUS*/
+.dropdown-wrapper{
+    position: relative;
+}
+.dropdown{
+    position: absolute;
+    display: inline-block;
+    /*margin-left: 20px;*/
+    margin-right: 30px;
+    color: lightslategray;
+    width: 20vw;
+    /*mix-blend-mode:difference;*/
+}
+
+.dropdown-content {
+    /* position absolute means its positioned relative to nearest ancestor -if it can't find one, it'll be relative to container block
+    but because the content is a CHILD of the button (with relative positionng due to dropdown-wrapper)
+    and now the default behaviour of position absolute is to align itself at the top-left of the parent*/
+    position: absolute;
+    display: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+/* means all of the children of the .dropdown-content */
+.dropdown-content * {
+    color: white;
+    padding: 10px;
+    display: flex;
+    text-decoration: none;
+}
+  
+.dropdown-content *:hover {
+    /*background-color: #f1f1f1;*/
+    color: #D0546F;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* selling overviwq*/
+.page-title{
+    align-content: center;
+    justify-content: center;
+}
+.user-item{
+    display: flex;
+    border: 1px solid #D0546F;
+    padding: 10px;
+    margin: 10px;
+    /*margin-bottom: 20px;*/
+    width: 80vw;
+    height: fit-content;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; /*when user hovers over, it will cause this*/
+    cursor: pointer;
+}
+.item-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D0546F;
+    padding: 10px;
+    width: fit-content;
+    height:fit-content;
+    /*
+    width: 12%;
+    height: auto;*/
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+  
+.item-listing{
+    flex: 1;
+    display: flex;
+    align-content: left;
+    flex-direction: column;
+}
+  
+/*item-list code*/
+.container {
+    display: flex;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100vw;
+    height: 100vh;
+}
+  
+.item-list {
+    display: flex;
+    align-content:center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 10%;
+    z-index: 0;
+}
+  
+.item-card:hover {
+    transform: translateY(-5px);
+}
+  
+.item-card-img {
+    min-width: 5vw;
+    min-height: 10vh;
+    max-width: 15vw;
+    max-height: 20vh;
+    /*object-fit: cover;*/
+}
+  
+.item-card h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+  
+.item-card p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+  
+  
+/*FORMATTING the ITEM PAGE LISTING*/
+.page-container{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    max-height: 100vh;
+    width: 100%;
+}
+.itempage-left{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+.itempage-right{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:center;
+    padding: 20px;
+}
+.itempage-center{
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    /* margin: top right bottom left; */
+    margin: 2% 2% 5% 2%;
+    padding: 2% 0% 2% 0%;
+}
+.page-img{
+    /* this will be bigger than the page-img or item-card-img*/
+    width: 300px;
+    max-height: auto;
+}
+  
+hr{
+    border-color: #333;
+    height: 2px;
+    width: 100%;
+    opacity: 1;
+}
+/*end of item page format*/
+  
+.bid-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+  
+.bid-btn:hover {
+    background-color: #0056b3;
+}
+  
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+/*nav*/
+.navbar {
+    /*display: flex;
+    justify-content: flex-end;*/
+    display: flex;
+    background-color: #333;
+    position: fixed;  /*Keeps the navbar fixed at the top of the viewport */
+    top: 0; /* Positions the navbar at the top of the viewport */
+    left: 0; /* Positions the navbar at the left edge of the viewport */
+    right: 0; /* Positions the navbar at the right edge of the viewport */
+    width: 100vw;
+    height: 10vh;
+    z-index: 1;
+}
+.navbar-links{ /* this is the container for all the router-links, if i want to space them */
+    display: flex;
+    width: 50vw;
+    justify-content: end;
+}
+.navbar a {
+    text-decoration: none; /*gets rid of underline below them, since they're links*/
+    color: white;
+    padding-right: 5%;
+}
+
+/* Add any hover or active styles for your navigation links here */
+.navbar a:hover {
+    color: lightcoral;
+}
+  
+.separator {
+    border-bottom: 1px solid #333;
+    width: 100%;
+    margin-bottom: 10px;
+}
+  
+.exit {
+    width: auto;
+    height: 3vh;
+    align-self: flex-end;
+    margin: 5px;
+}
+  
+.searchbar {
+    margin-bottom: 20px;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-color: #333;
+}
+  
+/* end */
+#app {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    max-width: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+}
+  
+@media (prefers-color-scheme: light) {
+    :root {
+      color: #213547;
+      background-color: #ffffff;
+    }
+    a:hover {
+      color: #747bff;
+    }
+    button {
+      background-color: #f9f9f9;
+    }
+}
