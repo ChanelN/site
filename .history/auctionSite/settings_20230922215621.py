@@ -16,7 +16,7 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
-environ.Env.read_env()
+environ.Env.read_end()
 
 
 # Quick-start development settings - unsuitable for production
@@ -215,10 +215,12 @@ INTERNAL_IPS = ['127.0.0.1']
 # for local dev I can use 'django.core.mail.backends.console.EmailBackend'
 #but default backend is smtp -> 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'ngochanel8@gmail.com'
+#EMAIL_HOST_PASSWORD = 'jkzzsuxvndcutyzf'
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-API_KEY = env('API_KEY')

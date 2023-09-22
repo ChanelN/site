@@ -108,13 +108,13 @@ def mailfunction(request):
         #from_email = data.get('from_email')
         from_email = settings.EMAIL_HOST_USER
         recipient = data.get('recipient')
-
+        
         #['admin@example.com']
         if subject and message and from_email and recipient:
             try:
                 send_mail(subject=subject, message=message, from_email=from_email, recipient_list=[recipient])
                 return JsonResponse({'message' : 'email sent successfully'})
-            except BadHeaderError as b: #prevent header injection
+            except BadHeaderError as b:
                 #return Response({'error': BadHeaderError}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
                 #return HttpResponse('Invalid header found.')
                 return JsonResponse({'error': str(b)}, status=400)

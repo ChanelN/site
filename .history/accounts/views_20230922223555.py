@@ -42,7 +42,8 @@ from django.conf import settings
 
 #verify whether user is using actual valid gmail account
 #so this just validates its real, the frontend actually sends it
-api_url = "https://emailvalidation.abstractapi.com/v1/?api_key=" + settings.API_KEY
+api_url = "https://emailvalidation.abstractapi.com/v1/?api_key=7860662ddebe4d90aea328faf185fe5a";
+#api_url = "https://emailvalidation.abstractapi.com/v1/?api_key=" + settings.API_KEY
 def validate_email(email):
     #request will send email as JSON
     #interpolation for python - str template for js
@@ -61,8 +62,7 @@ def is_email_valid(data):
     data_str = data.decode('utf-8')
     data_dict = json.loads(data_str)
     if data_dict["is_valid_format"]["value"] and data_dict["is_mx_found"]["value"] and data_dict["is_smtp_valid"]["value"]:
-        #is_free_email is just if the email is from free email provider
-        if not data_dict["is_catchall_email"]["value"] and not data_dict["is_role_email"]["value"]:
+        if not data_dict["is_catchall_email"]["value"] and not data_dict["is_role_email"]["value"] and not data_dict["is_free_email"]["value"]:
             return True
     return False
 

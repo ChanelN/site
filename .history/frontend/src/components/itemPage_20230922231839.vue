@@ -330,7 +330,7 @@ export default defineComponent({
                     url: 'http://127.0.0.1:8000/item/winner/',
                     data: {
                         subject: `You're the winner of ${item.value.title}`,
-                        message: `Congrats! Your final bid of £${topBid.value} won. \nThe next step is to select postage and pay.\n\n${sellerInfo.value.email} can't post the item until you do this, so please don't delay. Once you've paid, they will be alerted.`,
+                        message: `Congrats! Your final bid of £${topBid.value} won. The next step is to select postage and pay.\n${sellerInfo.value.email} can't post the item until you do this, so please don't delay. Once you've paid, they will be alerted.`,
                         recipient: winner_email.value,
                     }, 
                     headers: {

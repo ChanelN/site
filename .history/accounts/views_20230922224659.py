@@ -42,6 +42,7 @@ from django.conf import settings
 
 #verify whether user is using actual valid gmail account
 #so this just validates its real, the frontend actually sends it
+#api_url = "https://emailvalidation.abstractapi.com/v1/?api_key=7860662ddebe4d90aea328faf185fe5a";
 api_url = "https://emailvalidation.abstractapi.com/v1/?api_key=" + settings.API_KEY
 def validate_email(email):
     #request will send email as JSON

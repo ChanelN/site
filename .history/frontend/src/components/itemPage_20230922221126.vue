@@ -321,7 +321,6 @@ export default defineComponent({
             users 1-3 were made before this with fake emails so need to make new users
 
             i used to send the email from sellers email, but its better if its from admin account
-            from_email: settings.EMAIL_HOST_USER,
             */
             console.log("winner_id email", JSON.stringify(winner_id.value));
             if(winner_id.value != null){
@@ -330,7 +329,8 @@ export default defineComponent({
                     url: 'http://127.0.0.1:8000/item/winner/',
                     data: {
                         subject: `You're the winner of ${item.value.title}`,
-                        message: `Congrats! Your final bid of £${topBid.value} won. \nThe next step is to select postage and pay.\n\n${sellerInfo.value.email} can't post the item until you do this, so please don't delay. Once you've paid, they will be alerted.`,
+                        message: `Congrats! You were the highest bidder for ${topBid.value}.`,
+                        from_email: settings.EMAIL_HOST_USER,
                         recipient: winner_email.value,
                     }, 
                     headers: {
